@@ -1,0 +1,1322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flavio Goncalves | Software Developer Portfolio</title>
+    <meta name="description"
+        content="Portfolio profissional de Flavio Goncalves, software developer com foco em sistemas escalaveis, integracao e lideranca tecnica.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=League+Spartan:wght@400;500;600;700;800&family=Mulish:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg-0: #050505;
+            --bg-1: #161b22;
+            --bg-2: #0d1e2c;
+            --surface: rgba(22, 27, 34, 0.86);
+            --surface-strong: rgba(13, 30, 44, 0.94);
+            --ink: #ffffff;
+            --muted: #c5c9ff;
+            --accent: #3f45ff;
+            --accent-2: #5721c6;
+            --accent-soft: rgba(63, 69, 255, 0.28);
+            --warm: #ff5f4d;
+            --ring: rgba(63, 69, 255, 0.45);
+            --stroke: rgba(197, 201, 255, 0.2);
+            --radius: 18px;
+            --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: "Mulish", sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 78% 12%, rgba(63, 69, 255, 0.32) 0%, transparent 42%),
+                radial-gradient(circle at 10% 85%, rgba(87, 33, 198, 0.24) 0%, transparent 36%),
+                linear-gradient(135deg, var(--bg-0), var(--bg-1) 55%, var(--bg-2));
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(rgba(197, 201, 255, 0.025) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(197, 201, 255, 0.02) 1px, transparent 1px);
+            background-size: 100% 44px, 44px 100%;
+            opacity: 0.25;
+            z-index: -2;
+        }
+
+        .halo {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background: radial-gradient(circle at 48% 30%, rgba(63, 69, 255, 0.2), transparent 45%);
+            animation: pulseHalo 9s ease-in-out infinite;
+        }
+
+        @keyframes pulseHalo {
+
+            0%,
+            100% {
+                opacity: 0.45;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.8;
+                transform: scale(1.1);
+            }
+        }
+
+        .container {
+            width: min(1120px, calc(100% - 2.2rem));
+            margin-inline: auto;
+        }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            border-bottom: 1px solid var(--stroke);
+            background: rgba(5, 5, 5, 0.74);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .nav {
+            min-height: 66px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--ink);
+        }
+
+        .brand-mark {
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            display: grid;
+            place-items: center;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            border: 1px solid var(--stroke);
+            background: linear-gradient(145deg, rgba(63, 69, 255, 0.4), rgba(87, 33, 198, 0.3));
+            box-shadow: 0 0 24px rgba(63, 69, 255, 0.26);
+        }
+
+        .brand-text {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.84rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: var(--muted);
+        }
+
+        .brand-text strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--muted);
+            font-size: 0.85rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        .hero {
+            padding-block: 4.8rem 2.4rem;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 1.6rem;
+            align-items: stretch;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            font-size: 0.72rem;
+            margin-bottom: 0.9rem;
+        }
+
+        .eyebrow::before {
+            content: "";
+            width: 30px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent));
+        }
+
+        .hero h1 {
+            font-family: "League Spartan", sans-serif;
+            font-weight: 700;
+            font-size: clamp(2.4rem, 6vw, 4.7rem);
+            letter-spacing: 0.04em;
+            line-height: 0.95;
+            margin-bottom: 1rem;
+            max-width: 15ch;
+            text-wrap: balance;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+            text-shadow: 0 0 24px rgba(63, 69, 255, 0.45);
+        }
+
+        .hero .lead {
+            color: var(--muted);
+            max-width: 60ch;
+            font-size: 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+            margin-bottom: 1.55rem;
+        }
+
+        .meta-pill {
+            padding: 0.5rem 0.82rem;
+            border: 1px solid var(--stroke);
+            border-radius: 999px;
+            background: rgba(13, 30, 44, 0.65);
+            font-size: 0.8rem;
+            color: var(--muted);
+        }
+
+        .meta-pill strong {
+            color: var(--accent);
+            margin-right: 0.2rem;
+            font-weight: 600;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            border: 1px solid transparent;
+            border-radius: 12px;
+            padding: 0.72rem 1rem;
+            font-weight: 600;
+            font-size: 0.82rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 180px;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .btn-primary {
+            color: #ffffff;
+            border-color: rgba(63, 69, 255, 0.55);
+            background: linear-gradient(135deg, var(--accent), var(--accent-2));
+            box-shadow: 0 10px 28px rgba(63, 69, 255, 0.34);
+        }
+
+        .btn-secondary {
+            color: var(--ink);
+            border-color: rgba(63, 69, 255, 0.38);
+            background: rgba(63, 69, 255, 0.12);
+        }
+
+        .panel {
+            background: var(--surface);
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .panel::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(63, 69, 255, 0.85), rgba(255, 95, 77, 0.4), transparent);
+            opacity: 0.8;
+        }
+
+        .hero-card {
+            padding: 1.4rem;
+            display: grid;
+            gap: 1rem;
+            align-content: start;
+        }
+
+        .hero-card h2 {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            color: var(--accent);
+        }
+
+        .quick-list {
+            list-style: none;
+            display: grid;
+            gap: 0.7rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+        }
+
+        .quick-list li {
+            display: grid;
+            grid-template-columns: 20px 1fr;
+            align-items: start;
+            gap: 0.6rem;
+        }
+
+        .quick-list li::before {
+            content: ">";
+            color: var(--warm);
+            font-weight: 700;
+            line-height: 1;
+            margin-top: 0.15rem;
+        }
+
+        .stat-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.7rem;
+        }
+
+        .stat {
+            border: 1px solid rgba(197, 201, 255, 0.2);
+            border-radius: 14px;
+            padding: 0.8rem;
+            background: rgba(13, 30, 44, 0.6);
+        }
+
+        .stat .count {
+            font-family: "League Spartan", sans-serif;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            color: var(--accent);
+            font-size: 2rem;
+            line-height: 0.9;
+        }
+
+        .stat span {
+            display: block;
+            font-size: 0.75rem;
+            color: var(--muted);
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            margin-top: 0.2rem;
+        }
+
+        .section {
+            padding-block: 2.4rem;
+        }
+
+        .section-head {
+            margin-bottom: 1.1rem;
+            display: flex;
+            align-items: end;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .section-kicker {
+            color: var(--warm);
+            font-size: 0.72rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        .section h2 {
+            font-family: "League Spartan", sans-serif;
+            font-weight: 700;
+            font-size: clamp(2rem, 4.7vw, 3.2rem);
+            letter-spacing: 0.04em;
+            line-height: 0.95;
+            margin-top: 0.3rem;
+        }
+
+        .section-copy {
+            color: var(--muted);
+            max-width: 70ch;
+        }
+
+        .about-panel {
+            padding: 1.35rem;
+        }
+
+        .about-panel p {
+            color: var(--muted);
+            max-width: 80ch;
+        }
+
+        .about-panel strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .skills-layout {
+            display: grid;
+            grid-template-columns: 1.05fr 0.95fr;
+            gap: 1rem;
+            align-items: stretch;
+        }
+
+        .skill-orbit {
+            position: relative;
+            aspect-ratio: 1;
+            width: min(620px, 100%);
+            margin-inline: auto;
+            border-radius: 50%;
+            border: 1px solid var(--stroke);
+            background: radial-gradient(circle at center, rgba(63, 69, 255, 0.2), rgba(13, 30, 44, 0.84) 58%, rgba(5, 5, 5, 0.95));
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            min-height: 420px;
+        }
+
+        .skill-orbit::after {
+            content: "";
+            position: absolute;
+            inset: 10% 10%;
+            border-radius: 50%;
+            border: 1px dashed rgba(255, 95, 77, 0.32);
+            animation: spinSlow 26s linear infinite;
+        }
+
+        @keyframes spinSlow {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .orbit-ring {
+            position: absolute;
+            inset: 50% auto auto 50%;
+            translate: -50% -50%;
+            border: 1px solid var(--ring);
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: breathe 6s ease-in-out infinite;
+        }
+
+        .ring-1 {
+            width: 28%;
+            aspect-ratio: 1;
+            animation-delay: 0s;
+        }
+
+        .ring-2 {
+            width: 48%;
+            aspect-ratio: 1;
+            animation-delay: 0.5s;
+        }
+
+        .ring-3 {
+            width: 68%;
+            aspect-ratio: 1;
+            animation-delay: 1s;
+        }
+
+        .ring-4 {
+            width: 88%;
+            aspect-ratio: 1;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes breathe {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 0.9;
+            }
+        }
+
+        .orbit-center {
+            position: absolute;
+            inset: 50% auto auto 50%;
+            translate: -50% -50%;
+            width: 170px;
+            height: 170px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(63, 69, 255, 0.34), rgba(87, 33, 198, 0.3));
+            border: 1px solid rgba(63, 69, 255, 0.55);
+            display: grid;
+            place-items: center;
+            text-align: center;
+            color: var(--ink);
+            box-shadow: 0 0 34px rgba(63, 69, 255, 0.3);
+            padding: 0.8rem;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            z-index: 2;
+        }
+
+        .orbit-center strong {
+            display: block;
+            font-size: 1.05rem;
+            color: var(--accent);
+        }
+
+        .skill-node {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(calc(-50% + var(--x)), calc(-50% + var(--y)));
+            border-radius: 999px;
+            padding: 0.42rem 0.74rem;
+            font-size: 0.72rem;
+            letter-spacing: 0.05em;
+            border: 1px solid;
+            font-family: "JetBrains Mono", monospace;
+            white-space: nowrap;
+            animation: drift 6s ease-in-out infinite;
+            animation-delay: var(--delay, 0s);
+        }
+
+        .skill-node.cool {
+            background: rgba(63, 69, 255, 0.26);
+            border-color: rgba(63, 69, 255, 0.52);
+            color: #eff0ff;
+        }
+
+        .skill-node.warm {
+            background: rgba(255, 95, 77, 0.24);
+            border-color: rgba(255, 95, 77, 0.5);
+            color: #ffe3df;
+        }
+
+        .skill-node.neutral {
+            background: rgba(197, 201, 255, 0.14);
+            border-color: rgba(197, 201, 255, 0.42);
+            color: #f5f6ff;
+        }
+
+        @keyframes drift {
+
+            0%,
+            100% {
+                translate: 0 0;
+            }
+
+            50% {
+                translate: 0 -6px;
+            }
+        }
+
+        .skill-panels {
+            display: grid;
+            gap: 0.9rem;
+            align-content: start;
+        }
+
+        .skill-panels .panel {
+            padding: 1.1rem;
+        }
+
+        .skill-panels h3 {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.82rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.75rem;
+        }
+
+        .chip-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.48rem;
+        }
+
+        .chip {
+            padding: 0.38rem 0.62rem;
+            border-radius: 999px;
+            border: 1px solid rgba(63, 69, 255, 0.3);
+            background: rgba(63, 69, 255, 0.12);
+            font-size: 0.74rem;
+            color: var(--muted);
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        .list {
+            list-style: none;
+            display: grid;
+            gap: 0.56rem;
+            color: var(--muted);
+            font-size: 0.92rem;
+        }
+
+        .list li {
+            display: grid;
+            grid-template-columns: 18px 1fr;
+            gap: 0.45rem;
+        }
+
+        .list li::before {
+            content: "+";
+            color: var(--warm);
+            font-weight: 700;
+        }
+
+        .timeline {
+            display: grid;
+            gap: 0.9rem;
+        }
+
+        .xp-card {
+            padding: 1.2rem;
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .xp-card::after {
+            content: "";
+            position: absolute;
+            right: -35px;
+            top: -35px;
+            width: 90px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            border: 1px solid rgba(63, 69, 255, 0.4);
+        }
+
+        .xp-head {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 0.7rem;
+            flex-wrap: wrap;
+            margin-bottom: 0.35rem;
+        }
+
+        .xp-head h3 {
+            font-size: 1.06rem;
+            line-height: 1.3;
+        }
+
+        .xp-date {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.74rem;
+            letter-spacing: 0.08em;
+            color: var(--warm);
+            border: 1px solid rgba(255, 95, 77, 0.35);
+            border-radius: 999px;
+            padding: 0.2rem 0.6rem;
+            white-space: nowrap;
+        }
+
+        .xp-company {
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.55rem;
+            font-size: 0.9rem;
+        }
+
+        .xp-card ul {
+            margin-left: 1.15rem;
+            color: var(--muted);
+            display: grid;
+            gap: 0.4rem;
+            font-size: 0.92rem;
+        }
+
+        .impact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .impact-card {
+            padding: 1rem;
+            border: 1px solid var(--stroke);
+            border-radius: var(--radius);
+            background: var(--surface);
+            box-shadow: var(--shadow);
+        }
+
+        .impact-card h3 {
+            font-size: 1rem;
+            margin-bottom: 0.55rem;
+            color: var(--ink);
+        }
+
+        .impact-card p {
+            color: var(--muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .impact-metric {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.78rem;
+            letter-spacing: 0.08em;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .edu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.9rem;
+        }
+
+        .edu-grid .panel {
+            padding: 1.1rem;
+        }
+
+        .edu-grid h3 {
+            font-family: "JetBrains Mono", monospace;
+            font-size: 0.82rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 0.8rem;
+        }
+
+        .edu-item {
+            padding: 0.72rem 0;
+            border-bottom: 1px dashed rgba(152, 174, 196, 0.25);
+        }
+
+        .edu-item:last-child {
+            border-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .edu-item strong {
+            display: block;
+            color: var(--ink);
+            font-size: 0.95rem;
+            margin-bottom: 0.15rem;
+        }
+
+        .edu-item span {
+            display: block;
+            color: var(--muted);
+            font-size: 0.86rem;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 0.7rem;
+            margin-top: 0.85rem;
+        }
+
+        .contact-item {
+            border: 1px solid var(--stroke);
+            border-radius: 14px;
+            padding: 0.85rem;
+            background: rgba(63, 69, 255, 0.12);
+        }
+
+        .contact-item h3 {
+            font-size: 0.72rem;
+            color: var(--warm);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            margin-bottom: 0.3rem;
+            font-family: "JetBrains Mono", monospace;
+        }
+
+        .contact-item p,
+        .contact-item a {
+            color: var(--ink);
+            font-size: 0.9rem;
+            text-decoration: none;
+            word-break: break-word;
+        }
+
+        .contact-item a:hover {
+            color: var(--accent);
+        }
+
+        footer {
+            margin-top: 2.4rem;
+            padding-block: 1.4rem 2.2rem;
+            border-top: 1px solid var(--stroke);
+            color: var(--muted);
+            font-size: 0.8rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            text-align: center;
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+            transition-delay: var(--delay, 0s);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @media (max-width: 1050px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-orbit {
+                min-height: 360px;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            .container {
+                width: min(1120px, calc(100% - 1.3rem));
+            }
+
+            .nav {
+                min-height: 62px;
+            }
+
+            .brand-text {
+                display: none;
+            }
+
+            .nav-links {
+                gap: 0.7rem;
+            }
+
+            .nav-links a {
+                font-size: 0.73rem;
+            }
+
+            .hero {
+                padding-top: 3.1rem;
+            }
+
+            .hero h1 {
+                max-width: 100%;
+            }
+
+            .btn {
+                min-width: 100%;
+            }
+
+            .stat-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skill-orbit {
+                min-height: 320px;
+            }
+
+            .orbit-center {
+                width: 130px;
+                height: 130px;
+                font-size: 0.7rem;
+            }
+
+            .skill-node {
+                font-size: 0.63rem;
+                padding: 0.32rem 0.55rem;
+            }
+
+            .impact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .edu-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation: none !important;
+                transition: none !important;
+            }
+
+            html {
+                scroll-behavior: auto;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="halo" aria-hidden="true"></div>
+
+    <header class="site-header">
+        <div class="container nav">
+            <a class="brand" href="#top" aria-label="Ir para o topo da pagina">
+                <span class="brand-mark">FG</span>
+                <span class="brand-text"><strong>Flávio Malungo Goncalves</strong> // Software Developer</span>
+            </a>
+
+            <nav class="nav-links" aria-label="Navegacao principal">
+                <a href="#sobre">Sobre</a>
+                <a href="#competencias">Competencias</a>
+                <a href="#experiencia">Experiencia</a>
+                <a href="#formacao">Formacao</a>
+                <a href="#contato">Contato</a>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top">
+        <section class="hero container">
+            <div class="reveal" style="--delay: 0.05s;">
+                <p class="eyebrow">Portfolio</p>
+                <h1>Construindo <span>sistemas robustos</span> para produtos que precisam escalar.</h1>
+                <p class="lead">
+                    Sou Flávio Goncalves, software developer com 3 anos de experiencia em criacao,
+                    implementacao e otimizacao de sistemas complexos. Meu foco e transformar requisitos
+                    de negocio em solucoes tecnicas confiaveis, mensuraveis e sustentaveis.
+                </p>
+
+                <div class="hero-meta">
+                    <span class="meta-pill"><strong>3+</strong> anos de experiencia</span>
+                    <span class="meta-pill"><strong>30%</strong> melhoria de eficiencia</span>
+                    <span class="meta-pill"><strong>7</strong> equipas lideradas</span>
+                </div>
+
+                <div class="hero-actions">
+                    <a class="btn btn-primary" href="#contato">Entrar em contato</a>
+                    <a class="btn btn-secondary" href="#experiencia">Ver experiencia</a>
+                </div>
+            </div>
+
+            <aside class="hero-card panel reveal" style="--delay: 0.14s;">
+                <h2>Resumo rapido</h2>
+                <ul class="quick-list">
+                    <li>Design e implementacao de arquiteturas de sistemas avancadas para ambientes de alta exigencia.
+                    </li>
+                    <li>Lideranca de times de engenharia com alinhamento entre tecnologia, negocio e conformidade.</li>
+                    <li>Atuacao em projetos para saude, financas, educacao e clientes de pequeno e medio porte.</li>
+                </ul>
+
+                <div class="stat-grid">
+                    <article class="stat">
+                        <p class="count" data-target="30">0</p>
+                        <span>ganho de desempenho</span>
+                    </article>
+                    <article class="stat">
+                        <p class="count" data-target="3">0</p>
+                        <span>anos de carreira</span>
+                    </article>
+                    <article class="stat">
+                        <p class="count" data-target="7">0</p>
+                        <span>equipas lideradas</span>
+                    </article>
+                    <article class="stat">
+                        <p class="count" data-target="4">0</p>
+                        <span>setores atendidos</span>
+                    </article>
+                </div>
+            </aside>
+        </section>
+
+        <section id="sobre" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <p class="section-kicker">Sobre</p>
+                        <h2>Perfil profissional</h2>
+                    </div>
+                </div>
+
+                <article class="panel about-panel reveal" style="--delay: 0.08s;">
+                    <p>
+                        Profissional comprometido e inovador, com historico em sistemas de missao critica e
+                        melhoria continua de operacoes tecnicas. Minha abordagem combina <strong>visao de
+                            arquitetura</strong>,
+                        <strong>execucao pratica</strong> e <strong>colaboracao entre areas</strong> para entregar
+                        software com qualidade,
+                        confiabilidade e impacto real no negocio.
+                    </p>
+                </article>
+            </div>
+        </section>
+
+        <section id="competencias" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <p class="section-kicker">Competencias</p>
+                        <h2>Mapa de habilidades</h2>
+                    </div>
+                    <p class="section-copy">
+                        Estrutura de habilidades inspirada no modelo visual anexado, organizada por camadas de atuacao.
+                    </p>
+                </div>
+
+                <div class="skills-layout">
+                    <div class="skill-orbit reveal" style="--delay: 0.05s;"
+                        aria-label="Mapa radial de competencias tecnicas">
+                        <div class="orbit-ring ring-1"></div>
+                        <div class="orbit-ring ring-2"></div>
+                        <div class="orbit-ring ring-3"></div>
+                        <div class="orbit-ring ring-4"></div>
+
+                        <div class="orbit-center">
+                            Core
+                            <strong>System Design</strong>
+                            Entrega de valor
+                        </div>
+
+                        <span class="skill-node cool" style="--x: 0px; --y: -180px; --delay: 0.3s;">Arquitetura</span>
+                        <span class="skill-node warm" style="--x: 130px; --y: -125px; --delay: 0.7s;">Integracao
+                            API</span>
+                        <span class="skill-node neutral" style="--x: 174px; --y: -20px; --delay: 1s;">CI/CD</span>
+                        <span class="skill-node cool" style="--x: 145px; --y: 102px; --delay: 0.9s;">Cloud</span>
+                        <span class="skill-node warm"
+                            style="--x: 45px; --y: 176px; --delay: 0.5s;">Observabilidade</span>
+                        <span class="skill-node neutral" style="--x: -70px; --y: 176px; --delay: 1.2s;">Seguranca</span>
+                        <span class="skill-node cool" style="--x: -160px; --y: 110px; --delay: 0.4s;">Lideranca
+                            Tecnica</span>
+                        <span class="skill-node warm"
+                            style="--x: -178px; --y: -20px; --delay: 0.8s;">Documentacao</span>
+                        <span class="skill-node neutral"
+                            style="--x: -138px; --y: -125px; --delay: 0.6s;">Governanca</span>
+
+                        <span class="skill-node cool" style="--x: 0px; --y: -115px; --delay: 0.2s;">Python</span>
+                        <span class="skill-node neutral" style="--x: 94px; --y: -70px; --delay: 0.4s;">JavaScript</span>
+                        <span class="skill-node warm" style="--x: 108px; --y: 15px; --delay: 0.6s;">SQL</span>
+                        <span class="skill-node cool" style="--x: 56px; --y: 88px; --delay: 0.8s;">Backend</span>
+                        <span class="skill-node neutral" style="--x: -45px; --y: 90px; --delay: 1s;">Frontend</span>
+                        <span class="skill-node warm" style="--x: -104px; --y: 16px; --delay: 1.2s;">DevOps</span>
+                        <span class="skill-node cool" style="--x: -90px; --y: -70px; --delay: 1.3s;">Testing</span>
+                    </div>
+
+                    <div class="skill-panels">
+                        <article class="panel reveal" style="--delay: 0.1s;">
+                            <h3>Linguagens e stack</h3>
+                            <div class="chip-wrap">
+                                <span class="chip">JavaScript</span>
+                                <span class="chip">Python</span>
+                                <span class="chip">SQL</span>
+                                <span class="chip">APIs REST</span>
+                                <span class="chip">Arquitetura de Sistemas</span>
+                                <span class="chip">Integracao de Servicos</span>
+                                <span class="chip">Monitoramento</span>
+                                <span class="chip">Documentacao Tecnica</span>
+                            </div>
+                        </article>
+
+                        <article class="panel reveal" style="--delay: 0.16s;">
+                            <h3>Competencias de entrega</h3>
+                            <ul class="list">
+                                <li>Planejamento e implementacao de solucoes escalaveis orientadas a resultados.</li>
+                                <li>Coordenacao de equipe multidisciplinar com foco em qualidade e previsibilidade.</li>
+                                <li>Traducao de requisitos regulatorios e de negocio em especificacoes tecnicas claras.
+                                </li>
+                                <li>Evolucao continua de sistemas com melhora de desempenho e confiabilidade.</li>
+                            </ul>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiencia" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <p class="section-kicker">Experiencia</p>
+                        <h2>Historico profissional</h2>
+                    </div>
+                </div>
+
+                <div class="timeline">
+                    <article class="xp-card reveal" style="--delay: 0.04s;">
+                        <div class="xp-head">
+                            <h3>Designer de Sistemas</h3>
+                            <span class="xp-date">2026</span>
+                        </div>
+                        <p class="xp-company">Freelancer</p>
+                        <ul>
+                            <li>Projetei e implementei arquiteturas de sistemas avancadas, em um robo de trading
+                                (python) no mercado financeiro resultando em aumento de 40% na eficiencia operacional.
+                            </li>
+                            <li>Implementei solucoes escalaveis alinhadas aos objetivos.</li>
+                        </ul>
+                    </article>
+
+                    <article class="xp-card reveal" style="--delay: 0.08s;">
+                        <div class="xp-head">
+                            <h3>Software Developer / Back-End Developer</h3>
+                            <span class="xp-date">2023 - 2024</span>
+                        </div>
+                        <p class="xp-company">Empresa Génesis Technology</p>
+                        <ul>
+                            <li>Desenvolvi projetos para clientes nos setores de saude, financas e educacao.</li>
+                            <li>Implementei melhorias em design e integracao de sistemas, elevando desempenho e
+                                confiabilidade.</li>
+                        </ul>
+                    </article>
+
+                    <article class="xp-card reveal" style="--delay: 0.12s;">
+                        <div class="xp-head">
+                            <h3>Analista de Projetos de TI</h3>
+                            <span class="xp-date">2022 - 2023</span>
+                        </div>
+                        <p class="xp-company">Systems Design</p>
+                        <ul>
+                            <li>Apoiei projetos de implementacao de sistemas para clientes de pequeno e medio porte.
+                            </li>
+                            <li>Colaborei com designers para detalhar especificacoes e produzir documentacao tecnica
+                                completa.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <p class="section-kicker">Destaques</p>
+                        <h2>Impacto em projetos</h2>
+                    </div>
+                </div>
+
+                <div class="impact-grid">
+                    <article class="impact-card reveal" style="--delay: 0.04s;">
+                        <h3>Arquitetura Escalavel</h3>
+                        <p>Modelagem e evolucao de arquiteturas para suportar crescimento de usuarios e servicos.</p>
+                    </article>
+
+                    <article class="impact-card reveal" style="--delay: 0.08s;">
+                        <h3>Integracao Multi Setor</h3>
+                        <p>Entrega de solucoes para saude, financas e educacao com foco em confiabilidade e seguranca.
+                        </p>
+                    </article>
+
+                    <article class="impact-card reveal" style="--delay: 0.12s;">
+                        <h3>Lideranca Tecnica</h3>
+                        <p>Gestao de equipe para acelerar entregas com padrao tecnico consistente.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="formacao" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <p class="section-kicker">Formação</p>
+                        <h2>Academica</h2>
+                    </div>
+                </div>
+
+                <div class="edu-grid">
+                    <article class="panel reveal" style="--delay: 0.05s;">
+                        <h3>Histórico academico</h3>
+
+                        <div class="edu-item">
+                            <strong>Engenharia de Software</strong>
+                            <span>Escola 42 Luanda | 2024 - 2026</span>
+                            <br>
+                            <span>• Escola de engenharia de software de referência mundial baseada em peer-learning e
+                                projetos reais, sem professores nem aulas tradicionais.
+                            </span>
+                            <span>• Mais de 1.300 horas de projetos práticos em C, C++, Unix, redes, Docker e
+                                desenvolvimento web.
+                            </span>
+                        </div>
+
+                        <div class="edu-item">
+                            <strong>Ensino Médio - Curso Técnico de Informática</strong>
+                            <span>Instituto Politecnico Industrial Simione Mucune  | 2019 - 2023</span>
+                            <br>
+                            <span>• Formação técnica com componente prática sólida em programação, TIC, redes e manutenção de equipamentos</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="contato" class="section">
+            <div class="container">
+                <div class="section-head reveal">
+                    <div>
+                        <p class="section-kicker">Contato</p>
+                        <h2>Vamos conversar sobre seu proximo projeto</h2>
+                    </div>
+                    <p class="section-copy">Disponivel para oportunidades de desenvolvimento e arquitetura de software.
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    <article class="contact-item reveal" style="--delay: 0.04s;">
+                        <h3>Telefone</h3>
+                        <p>(+244) 930 177 216</p>
+                    </article>
+
+                    <article class="contact-item reveal" style="--delay: 0.08s;">
+                        <h3>E-mail</h3>
+                        <a href="mailto:ola@grandesite.com.br">flaviomalungo0@gmail.com</a>
+                    </article>
+
+                    <article class="contact-item reveal" style="--delay: 0.12s;">
+                        <h3>Localizacao</h3>
+                        <p>Talatona<br>Luanda, Angola</p>
+                    </article>
+
+                    <article class="contact-item reveal" style="--delay: 0.16s;">
+                        <h3>LinkedIn / GitHub</h3>
+                        <a href="https://www.linkedin.com/in/fl%C3%A1vio-gon%C3%A7alves-006637389/" target="_blank"
+                            rel="noreferrer noopener">linkedin.com/in/flaviogonca</a>
+                        <a href="https://www.github.com/flaviogonca" target="_blank"
+                            rel="noreferrer noopener">github.com/flaviogonca</a>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Flávio Goncalves | Software Developer</p>
+    </footer>
+
+    <script>
+        const revealElements = document.querySelectorAll(".reveal");
+
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.18 });
+
+        revealElements.forEach((el) => revealObserver.observe(el));
+
+        const countElements = document.querySelectorAll(".count");
+
+        const countObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (!entry.isIntersecting) {
+                    return;
+                }
+
+                const el = entry.target;
+                const target = Number(el.dataset.target || "0");
+                const duration = 1200;
+                const start = performance.now();
+
+                const tick = (now) => {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const value = Math.floor(target * progress);
+                    el.textContent = value.toString();
+
+                    if (progress < 1) {
+                        requestAnimationFrame(tick);
+                    } else {
+                        el.textContent = target.toString();
+                    }
+                };
+
+                requestAnimationFrame(tick);
+                countObserver.unobserve(el);
+            });
+        }, { threshold: 0.35 });
+
+        countElements.forEach((el) => countObserver.observe(el));
+    </script>
+</body>
+
+</html>
